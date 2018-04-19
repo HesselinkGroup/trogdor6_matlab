@@ -4,11 +4,11 @@ function [dfdp, dfdv, dvdp] = calculateAdjointSensitivity(node, parameters,...
 import t7.*
 import t7.adjoint.*
 
-fwdFileNames = {'boundary_dexx', 'boundary_deyy', 'boundary_dezz'};
-adjFileNames = {'boundary_adjoint_exx', 'boundary_adjoint_eyy', ...
-    'boundary_adjoint_ezz'};
-adjRevFileNames = {'boundary_adjoint_exx.rev', 'boundary_adjoint_eyy.rev',...
-    'boundary_adjoint_ezz.rev'};
+fwdFileNames = {'boundary_dex', 'boundary_dey', 'boundary_dez'};
+adjFileNames = {'boundary_adjoint_ex', 'boundary_adjoint_ey', ...
+    'boundary_adjoint_ez'};
+adjRevFileNames = {'boundary_adjoint_ex.rev', 'boundary_adjoint_ey.rev',...
+    'boundary_adjoint_ez.rev'};
 
 if ~exist('outDir')
     outDir = 'output';
