@@ -21,6 +21,7 @@ classdef OutputFile < handle
         Regions = struct('YeeCells', [], 'Size', [], 'Stride', [], ...
             'NumYeeCells', [], 'Bounds', []);
         Durations = {}; % struct: d.First, d.Last, d.Period, d.NumTimesteps
+        AngularFrequencies = {};
         Materials = {};  % used in grid reports
         HalfCells = {};  % used in grid reports
         UnitVectors = [1 0 0; 0 1 0; 0 0 1];
@@ -62,6 +63,10 @@ classdef OutputFile < handle
             nF = numel(obj.Fields);
         end
         
+        function nA = numAngularFrequencies(obj)
+            nA = numel(obj.AngularFrequencies);
+        end
+        
         function yesNo = hasBounds(obj)
             yesNo = ~any(isnan(obj.Regions.Bounds(:)));
         end
@@ -79,6 +84,7 @@ classdef OutputFile < handle
         xyz = positions(obj, varargin);
         nn = timesteps(obj);
         tt = times(obj, varargin);
+        omegas = angularFrequencies(obj);
         
         open(obj)
         [data, positions] = readFrames(obj, varargin)

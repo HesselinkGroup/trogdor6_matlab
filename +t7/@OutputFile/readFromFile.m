@@ -4,10 +4,24 @@ numFields = length(obj.Fields);
 
 % Provided that obj.Precision is 'float32' or 'float64' or something like that,
 % this string will have the proper form 'float32=>float32' for fread().
-precisionString = [obj.Precision, '=>', obj.Precision];
 
-readLength = obj.FrameSize * numFrames;
-[rawdata, count] = fread(obj.FileHandle, readLength, precisionString);
+if strcmp(obj.Precision, 'float32') || strcmp(obj.Precision, 'complex32')
+    precisionString = 'float32=>float32';
+elseif strcmp(obj.Precision, 'float64') || strcmp(obj.Precision, 'complex64')
+    precisionString = 'float64=>float64';
+else
+    error('Invalid precision string %s', precisionString);
+end
+
+if strcmp(obj.Precision, 'complex32') || strcmp(obj.Precision, 'complex64')
+    readLength = obj.FrameSize * numFrames;
+    [rawdata, countRealNums] = fread(obj.FileHandle, readLength*2, precisionString);
+    rawdata = rawdata(1:2:end) + 1i*rawdata(2:2:end);
+    count = countRealNums/2;
+else
+    readLength = obj.FrameSize * numFrames;
+    [rawdata, count] = fread(obj.FileHandle, readLength, precisionString);
+end
 
 if count ~= numFrames*obj.FrameSize
     error('Could not read %i frames.', numFrames);
@@ -26,11 +40,10 @@ assert(frameFieldVals == int64(frameFieldVals));
 
 for frameNumber = 1:numFrames
     for fieldNumber = 1:numFields
-        readFieldBegin = (fieldNumber-1)*frameFieldVals +...
-            (frameNumber-1)*obj.FrameSize + 1;
+        readFieldBegin = (fieldNumber-1)*frameFieldVals + (frameNumber-1)*obj.FrameSize + 1;
         
         % At this point, if I read from readFieldBegin for readFieldSize
-        % floats, I will read all regions, all x y z, for one field, for
+        % values, I will read all regions, all x y z, for one field, for
         % one timestep.
         %
         % Instead, go through each region in turn.

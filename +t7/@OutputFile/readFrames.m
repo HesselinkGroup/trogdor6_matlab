@@ -84,28 +84,3 @@ for rr = 1:obj.numRegions()
     end
 end
 
-
-%{
-pos = cell(obj.numRegions, 3);
-for rr = 1:obj.numRegions()
-    if isempty(numSamplesInRegions)
-        numSamples = (obj.Regions.Bounds(rr,4:6) - obj.Regions.Bounds(rr,1:3)) ...
-            ./ obj.Dxyz;
-    else
-        numSamples = numSamplesInRegions(rr,:);
-    end
-    numSamples = ceil(numSamples);
-    numSamples(numSamples < 1) = 1;
-
-    for xyz = 1:3
-        if numSamples(xyz) > 1
-            pos{rr,xyz} = linspace(obj.Regions.Bounds(rr,xyz), ...
-                obj.Regions.Bounds(rr,xyz+3), numSamples(xyz));
-        else
-            pos{rr,xyz} = obj.Regions.Bounds(rr,xyz);
-        end
-    end    
-end
-%}
-
-

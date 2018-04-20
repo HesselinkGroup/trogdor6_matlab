@@ -45,7 +45,7 @@ if ~isempty(X.Positions)
     end
 end
 
-frameBytes = sum(prod(frameSizes,2))*8;
+frameBytes = sum(prod(frameSizes,2))*obj.BytesPerValue;
 chunkBytes = 1e7;
 [chunkStarts, chunkEnds] = t7.OutputFile.chunkTimesteps(nFirst, nLast, frameBytes, chunkBytes);
 numChunks = length(chunkStarts);

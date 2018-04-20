@@ -7,6 +7,7 @@ isTrogdor5 = 0;
 % Figure out how many regions there will be, in advance
 numRegions = 0;
 numDurations = 0;
+numFrequencies = 0;
 
 fid = fopen(obj.SpecFileName, 'r');
 try
@@ -22,6 +23,8 @@ try
                     numRegions = numRegions + 1;
                 case 'duration'
                     numDurations = numDurations + 1;
+                case 'angularFrequency'
+                    numFrequencies = numFrequencies + 1;
                 otherwise
                     % nothing
             end
@@ -45,8 +48,12 @@ obj.Regions.NumYeeCells = zeros(numRegions, 1);
 obj.Regions.Bounds = nan(numRegions, 6);
 
 obj.Durations = cell(numDurations, 1);
+
+obj.AngularFrequencies = zeros(numFrequencies,1);
+
 nRegion = 1;
 nDuration = 1;
+nFreq = 1;
 
 %t0 = cputime;
 
@@ -82,15 +89,19 @@ try % everything else, but close file before rethrow
             case 'precision'
                 precision = sscanf(remainder, '%s');
                 if ~strcmp(precision, 'float32') && ...
-                    ~strcmp(precision, 'float64')
+                    ~strcmp(precision, 'float64') && ...
+                    ~strcmp(precision, 'complex32') && ...
+                    ~strcmp(precision, 'complex64')
                     error(sprintf('Invalid precision %s', precision));
                 end
                 obj.Precision = precision;
                 
                 if strcmp(precision, 'float32')
                     obj.BytesPerValue = 4;
-                elseif strcmp(precision, 'float64')
+                elseif strcmp(precision, 'float64') || strcmp(precision, 'complex32')
                     obj.BytesPerValue = 8;
+                elseif strcmp(precision, 'complex64')
+                    obj.BytesPerValue = 16;
                 end
                                 
             case 'date'
@@ -192,6 +203,14 @@ try % everything else, but close file before rethrow
                         'Duration', [dat(4) dat(5)]);
                     obj.Durations{nDuration} = duration;
                     nDuration = nDuration + 1;
+                else
+                    error('Cannot parse line %s', lineFromFile);
+                end
+            case 'angularFrequency'
+                [dat, count] = sscanf(remainder, '%f');
+                if count == 1
+                    nFreq = nFreq + 1;
+                    obj.AngularFrequencies(nFreq) = dat;
                 else
                     error('Cannot parse line %s', lineFromFile);
                 end
