@@ -209,8 +209,8 @@ try % everything else, but close file before rethrow
             case 'angularFrequency'
                 [dat, count] = sscanf(remainder, '%f');
                 if count == 1
-                    nFreq = nFreq + 1;
                     obj.AngularFrequencies(nFreq) = dat;
+                    nFreq = nFreq + 1;
                 else
                     error('Cannot parse line %s', lineFromFile);
                 end

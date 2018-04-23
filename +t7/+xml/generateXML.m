@@ -33,6 +33,8 @@ root.setAttribute('dz', num2str(sim.Dxyz(3), 10));
 root.setAttribute('dt', num2str(sim.Dt, 10));
 root.setAttribute('numT', num2str(sim.NumT));
 
+t7.xml.addTimeHarmonic(doc, sim);
+
 t7.xml.addMaterials(doc, sim);
 
 t7.xml.addGrids(doc, sim, designParameters, mode);

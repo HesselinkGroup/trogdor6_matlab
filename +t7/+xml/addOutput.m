@@ -14,7 +14,7 @@ elemXML.setAttribute('file', output.filename);
 if isfield(output, 'frequency')
 for ff = 1:numel(output.frequency)
     frqXML = doc.createElement('Frequency');
-    frqXML.setAttribute('frequency', num2str(output.frequency(ff)));
+    frqXML.setAttribute('omega', num2str(output.frequency(ff)));
     
     elemXML.appendChild(frqXML);
 end

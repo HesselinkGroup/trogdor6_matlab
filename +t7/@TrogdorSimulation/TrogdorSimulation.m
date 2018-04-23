@@ -3,9 +3,8 @@ classdef TrogdorSimulation < handle
     properties
         Materials = {};
         Grid = t7.TrogdorGrid;
-        %Grids = {}
-        %CurrentGrid % handle to, well, the current grid
         ElectromagneticMode = '3d'
+        TimeHarmonic = []
         Dxyz = 0
         Dt = 0
         NumT = 0
@@ -44,29 +43,4 @@ classdef TrogdorSimulation < handle
         v = extendIntoPML(obj, verts);
     end
     
-    %methods (Access = private)
-    %    function obj = TrogdorSimulation(Dxyz, Dt, NumT)
-    %    end
-    %end 
-    
-    methods (Static)
-        %{
-        function clear()
-            global TROGDOR_SIMULATION
-            %if exist('TROGDOR_SIMULATION', 'var')
-            %    delete(TROGDOR_SIMULATION);
-            %end
-            TROGDOR_SIMULATION = t7.TrogdorSimulation();
-        end
-        
-        function obj = instance()
-            global TROGDOR_SIMULATION
-            if ~isa(TROGDOR_SIMULATION, 't7.TrogdorSimulation')
-                TROGDOR_SIMULATION = t7.TrogdorSimulation();
-            end
-            obj = TROGDOR_SIMULATION;
-        end
-        %}
-        %write(fileName);
-    end
 end
