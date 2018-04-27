@@ -129,7 +129,7 @@ obj.field = fieldTokens;
 obj.yeeCells = X.YeeCells;
 obj.timesteps = X.Timesteps; % validated
 obj.timeData = X.TimeData; % validated
-obj.maskData = X.MaskData; % validated
+%obj.maskData = X.MaskData; % validated
 obj.spaceTimeData = X.SpaceTimeData;
 obj.mode = X.Mode;
 

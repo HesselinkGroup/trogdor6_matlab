@@ -36,7 +36,6 @@ if exist(fname, 'file') && ~src.overwrite
     fprintf('Not overwriting current source %s.\n', fname);
 end
 
-% Time data
 if ~isempty(src.timeData)
     elemXML.setAttribute('timeFile', fname);
     
@@ -45,10 +44,7 @@ if ~isempty(src.timeData)
     end
     
     t7.xml.writeSourceSpec(sim, src, 'AutoTimeFile', fname);
-end
-
-% Space-time data
-if ~isempty(src.spaceTimeData)
+elseif ~isempty(src.spaceTimeData)
     elemXML.setAttribute('spaceTimeFile', fname);
     
     if writeFile
@@ -56,10 +52,7 @@ if ~isempty(src.spaceTimeData)
     end
     
     t7.xml.writeSourceSpec(sim, src, 'AutoSpaceTimeFile', fname);
-end
-
-% Field function
-if ~isempty(src.fieldFunction)
+elseif ~isempty(src.fieldFunction)
     elemXML.setAttribute('spaceTimeFile', fname);
     
     if writeFile
@@ -73,31 +66,28 @@ if ~isempty(src.fieldFunction)
     end
     
     t7.xml.writeSourceSpec(sim, src, 'AutoSpaceTimeFile', fname);
-end
-
-% Field functor
-if ~isempty(src.fieldFunctor)
-    elemXML.setAttribute('spaceTimeFile', fname);
+else
+   
+    % phasorFunction may be empty or be user defined
+    elemXML.setAttribute('phasorFile', fname);
     
     if writeFile
-        if isempty(src.bounds)
-            writeFunctorCurrent_Yee(fname, src.yeeCells, src.field, ...
-                src.timesteps, src.fieldFunctor, sim.Precision);
+        if ~isempty(src.bounds)
+            writePhasor_Bounds(sim, fname, src.yeeCells, src.bounds,...
+                src.field, src.phasorFunction, sim.Precision);
         else
-            writeFunctorCurrent_Bounds(sim, fname, src.yeeCells, src.bounds, src.field, ...
-                src.timesteps, src.fieldFunctor, sim.Precision);
+            error('Phasor source requires Bounds argument.');
         end
     end
     
-    %warning('Not writing current')
-    
-    t7.xml.writeSourceSpec(sim, src, 'AutoSpaceTimeFile', fname);
+    % spec file not implemented
 end
 
 if isfield(src, 'spaceTimeFile')
     error('SpaceTimeFile should be gone now');
 end
 
+end
 
 
 function myWriteTimeFile(fname, timeData, precisionString)
@@ -110,7 +100,7 @@ catch
 end
 fclose(fh);
 
-return
+end
 
 
 function myWriteSpaceTimeData(fname, spaceTimeData, precisionString)
@@ -122,7 +112,7 @@ catch
 end
 fclose(fh);
 
-return
+end
 
 
 function fieldArgs = yeeCellArguments(yeeRegion, fieldTokens, duration)
@@ -149,7 +139,7 @@ for ff = 1:numel(fieldTokens)
     [fieldArgs(ff).xx, fieldArgs(ff).yy, fieldArgs(ff).zz] = ndgrid(x,y,z);
 end
 
-return
+end
 
 
 function writeFunctionCurrent_Yee(fname, yeeRegion, fieldTokens, duration, fieldFunction, precisionString)
@@ -168,33 +158,7 @@ for nn = 1:numT
     end
 end
 
-return
-
-
-function writeFunctorCurrent_Yee(fname, yeeRegion, fieldTokens, duration, fieldFunctor, precisionString)
-
-fh = fopen(fname, 'w');
-
-warning('This function has not been tested.')
-
-fieldArgs = yeeCellArguments(yeeRegion, fieldTokens, duration);
-
-fieldFunction = cell(size(fieldTokens));
-for ff = 1:numel(fieldTokens)
-    fieldFunction{ff} = fieldFunctor{ff}(...
-        fieldArgs(ff).xx, fieldArgs(ff).yy, fieldArgs(ff).zz);
 end
-
-numT = duration(2)-duration(1)+1;
-for nn = 1:numT
-    for ff = 1:numel(fieldTokens)
-        fwrite(fh, fieldFunction{ff}(fieldArgs(ff).t(nn)), precisionString);
-    end
-end
-
-return
-
-
 
 
 function fieldArgs = boundsArguments(sim, yeeRegion, bounds, fieldTokens, duration)
@@ -321,7 +285,7 @@ for ff = 1:numel(fieldTokens)
     [fieldArgs(ff).xx, fieldArgs(ff).yy, fieldArgs(ff).zz] = ndgrid(evalCoords{:});
 end
 
-return
+end
 
 
 function writeFunctionCurrent_Bounds(sim, fname, yeeRegion, bounds, fieldTokens, duration, fieldFunction, precisionString)
@@ -357,104 +321,45 @@ end
 
 fclose(fh);
 
-return
+end
 
-
-
-function writeFunctorCurrent_Bounds(sim, fname, yeeRegion, bounds, ...
-    fieldTokens, duration, fieldFunctor, precisionString)
+function writePhasor_Bounds(sim, fname, yeeRegion, bounds, fieldTokens, phasorFunction, precisionString)
 
 fh = fopen(fname, 'w');
 
-fieldArgs = boundsArguments(sim, yeeRegion, bounds, fieldTokens, duration);
+duration_UNUSED = [1,1];
+fieldArgs = boundsArguments(sim, yeeRegion, bounds, fieldTokens, duration_UNUSED);
 
-fieldFunction = cell(size(fieldTokens));
+src = zeros([yeeRegion(4:6)-yeeRegion(1:3)+1, numel(fieldTokens)]); %, chunkLengths(cc)]);
 for ff = 1:numel(fieldTokens)
-    fieldFunction{ff} = fieldFunctor{ff}(...
-        fieldArgs(ff).xx, fieldArgs(ff).yy, fieldArgs(ff).zz);
-end
-
-numT = duration(2)-duration(1)+1;
-
-for nn = 1:numT
-    src = zeros([yeeRegion(4:6)-yeeRegion(1:3)+1, numel(fieldTokens)]); %, chunkLengths(cc)]);
-    for ff = 1:numel(fieldTokens)
-        
-        rawCurrent = fieldFunction{ff}(fieldArgs(ff).t(nn));
-        
-        scaledCurrent = bsxfun(@times, reshape(fieldArgs(ff).weights{1}, [], 1, 1), ...
-            bsxfun(@times, reshape(fieldArgs(ff).weights{2}, 1, [], 1), ...
-            bsxfun(@times, reshape(fieldArgs(ff).weights{3}, 1, 1, []), rawCurrent)));
-        
-        % The scaled current may not be the full size of the source region.
-        % Fill in the appropriate elements.  This amounts to finding an index 
-        % offset.
-        
-        src(fieldArgs(ff).indicesX, fieldArgs(ff).indicesY, ...
-            fieldArgs(ff).indicesZ,ff,:) = scaledCurrent;
-    end
     
-    %fprintf('%i of %i\n', nn, numT);
-    fwrite(fh, src(:), precisionString);
+    if isempty(phasorFunction)
+        rawCurrent = ones(size(fieldArgs(ff).xx));
+    else
+        rawCurrent = phasorFunction{ff}(...
+            fieldArgs(ff).xx,fieldArgs(ff).yy,fieldArgs(ff).zz);
+    end
+
+    scaledCurrent = bsxfun(@times, reshape(fieldArgs(ff).weights{1}, [], 1, 1), ...
+        bsxfun(@times, reshape(fieldArgs(ff).weights{2}, 1, [], 1), ...
+        bsxfun(@times, reshape(fieldArgs(ff).weights{3}, 1, 1, []), rawCurrent)));
+
+    % The scaled current may not be the full size of the source region.
+    % Fill in the appropriate elements.  This amounts to finding an index 
+    % offset.
+
+    src(fieldArgs(ff).indicesX, fieldArgs(ff).indicesY, ...
+        fieldArgs(ff).indicesZ,ff,:) = scaledCurrent;
 end
+
+% We need to split the real and imaginary parts and interweave them
+src_realImag = [reshape(real(src), 1, []); reshape(imag(src), 1, [])];
+
+fwrite(fh, src_realImag(:), precisionString);
 
 fclose(fh);
 
-return
-
-
-% This function is faster than the non-chunked version UNTIL the copy into
-% a subarray of src.  That stage is preposterously slow.
-function writeFunctorCurrent_Bounds_Chunked(sim, fname, yeeRegion, bounds, fieldTokens, duration, fieldFunctor, precisionString)
-
-fh = fopen(fname, 'w');
-
-fieldArgs = boundsArguments(sim, yeeRegion, bounds, fieldTokens, duration);
-
-fieldFunction = cell(size(fieldTokens));
-for ff = 1:numel(fieldTokens)
-    fieldFunction{ff} = fieldFunctor{ff}(...
-        fieldArgs(ff).xx, fieldArgs(ff).yy, fieldArgs(ff).zz);
 end
-
-numT = duration(2)-duration(1)+1;
-
-timestepSize = [yeeRegion(4:6)-yeeRegion(1:3)+1, numel(fieldTokens)];
-maxChunkSize = 1e5;
-[chunkStarts, chunkEnds, chunkLengths] = t7.OutputFile.chunkTimesteps(...
-    duration(1)+1, duration(2)+1, prod(timestepSize), maxChunkSize);
-numChunks = numel(chunkStarts);
-fprintf('Chunk size %i or %i\n', chunkLengths(1), chunkLengths(end));
-
-for cc = 1:numChunks
-    src = zeros([yeeRegion(4:6)-yeeRegion(1:3)+1, numel(fieldTokens), chunkLengths(cc)]);
-    for ff = 1:numel(fieldTokens)
-        
-        rawCurrent = fieldFunction{ff}(fieldArgs(ff).t(chunkStarts(cc):chunkEnds(cc)));
-        
-        scaledCurrent = bsxfun(@times, reshape(fieldArgs(ff).weights{1}, [], 1, 1), ...
-            bsxfun(@times, reshape(fieldArgs(ff).weights{2}, 1, [], 1), ...
-            bsxfun(@times, reshape(fieldArgs(ff).weights{3}, 1, 1, []), rawCurrent)));
-        
-        % The scaled current may not be the full size of the source region.
-        % Fill in the appropriate elements.  This amounts to finding an index 
-        % offset.
-        
-        %numel(src(fieldArgs(ff).indicesX, fieldArgs(ff).indicesY, ...
-        %    fieldArgs(ff).indicesZ, ff, :))
-        %numel(scaledCurrent)
-        
-        src(fieldArgs(ff).indicesX, fieldArgs(ff).indicesY, ...
-            fieldArgs(ff).indicesZ,ff,:) = scaledCurrent;
-    end
-    
-    fwrite(fh, src(:), precisionString);
-end
-
-fclose(fh);
-
-return
-
 
 
 

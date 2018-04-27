@@ -39,18 +39,20 @@ for ll = 1:length(sim.Grid.TFSFSources)
         elemXML.appendChild(durXML);
     end
     
-    dataFileName = [directory, sprintf('__tfsfsource_%i', TROG_XML_COUNT___.tfsfTime)];
-    TROG_XML_COUNT___.tfsfTime = TROG_XML_COUNT___.tfsfTime + 1;
-    elemXML.setAttribute('file', dataFileName);
-    
-    if ~isempty(src.timeData)
-        myWriteTimeData(sim, dataFileName, src.timeData, numel(src.field));
-    elseif ~isempty(src.fieldFunction)
-        myWriteFunction(sim, dataFileName, src.fieldFunction, src.field, ...
-            src.timesteps, dt) 
+    if isempty(sim.TimeHarmonic)
+        dataFileName = [directory, sprintf('__tfsfsource_%i', TROG_XML_COUNT___.tfsfTime)];
+        TROG_XML_COUNT___.tfsfTime = TROG_XML_COUNT___.tfsfTime + 1;
+        elemXML.setAttribute('file', dataFileName);
+        
+        if ~isempty(src.timeData)
+            myWriteTimeData(sim, dataFileName, src.timeData, numel(src.field));
+        elseif ~isempty(src.fieldFunction)
+            myWriteFunction(sim, dataFileName, src.fieldFunction, src.field, ...
+                src.timesteps, dt)
+        end
+        t7.xml.writeSourceSpec(sim, src, 'AutoTimeFile', dataFileName);
     end
     
-    t7.xml.writeSourceSpec(sim, src, 'AutoTimeFile', dataFileName);
     
     gridXML.appendChild(elemXML);
 end

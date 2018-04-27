@@ -37,8 +37,6 @@ function addCurrentSource(varargin)
 %                   argument must be a cell array with one function per field
 %                   component, e.g. {jxFunc, jyFunc, jzFunc}.
 %                   (FieldFunction, TimeData, or SpaceTimeData required)
-%       FieldFunctor    A function F(x,y,z) that returns a function f(t)
-%                   providing the field on each timestep.
 %       TimeData    An array of size [nFields nTimesteps].  If the Timesteps
 %                   is specified as [0 10] then TimeData needs 11 columns, one
 %                   for each sourced timestep.
@@ -73,12 +71,11 @@ X.YeeCells = [];
 X.Bounds = [];
 X.Timesteps = [];
 X.FieldFunction = [];
-X.FieldFunctor = [];
+X.PhasorFunction = [];
 X.TimeData = [];
 X.SpaceTimeData = [];
 X.Mode = '';
 X.Overwrite = true;
-%X.SpaceTimeFile = [];
 X = t7.parseargs(X, varargin{:});
 
 validateDataRequestParameters(X);
@@ -106,9 +103,10 @@ if ~isempty(X.FieldFunction)
     end
 end
 
-if ~isempty(X.FieldFunctor)
-    if ~iscell(X.FieldFunctor)
-        X.FieldFunctor = {X.FieldFunctor};
+% Evaluate the phasor function at all the right places and times
+if ~isempty(X.PhasorFunction)
+    if ~iscell(X.PhasorFunction)
+        X.PhasorFunction = {X.PhasorFunction};
     end
 end
 
@@ -126,7 +124,7 @@ obj.yeeCells = X.YeeCells;
 obj.bounds = X.Bounds;
 obj.timesteps = X.Timesteps;
 obj.fieldFunction = X.FieldFunction;
-obj.fieldFunctor = X.FieldFunctor;
+obj.phasorFunction = X.PhasorFunction;
 obj.timeData = X.TimeData;
 obj.spaceTimeData = X.SpaceTimeData;
 obj.mode = X.Mode;
