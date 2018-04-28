@@ -5,9 +5,6 @@ import t7.*
 
 sim = simulation();
 
-obj = struct;
-obj.type = 'Background';
-
 X.Center = 0.0;
 X.Sigma = 0.0;
 X = t7.parseargs(X, varargin{:});

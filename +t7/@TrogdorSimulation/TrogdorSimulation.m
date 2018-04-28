@@ -5,6 +5,7 @@ classdef TrogdorSimulation < handle
         Grid = t7.TrogdorGrid;
         ElectromagneticMode = '3d'
         TimeHarmonic = []
+        BoundaryOutput = []
         Dxyz = 0
         Dt = 0
         NumT = 0
