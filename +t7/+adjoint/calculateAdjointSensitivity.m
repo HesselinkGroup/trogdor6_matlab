@@ -1,5 +1,4 @@
-function [dfdp, dfdv, dvdp] = calculateAdjointSensitivity(node, parameters,...
-    outDir)
+function [dfdp, dfdv, dvdp] = calculateAdjointSensitivity(node, parameters, outDir)
 
 import t7.*
 import t7.adjoint.*

@@ -44,6 +44,8 @@ function addMeasurement(varargin)
 %                       will be used for every region; if Stride has the same
 %                       number of rows as YeeCells, then each region will have
 %                       its own spatial sampling period.  (default: [1 1 1])
+%       Frequency       Frequency or frequencies of on-the-fly Fourier
+%                       transform (default: unused)
 %       Period          Temporal sampling period.  Set to 10 to save every tenth
 %                       timestep of each range in Timesteps.  If there are 
 %                       multiple rows in Timesteps, then each range of timesteps
@@ -80,6 +82,7 @@ X.Bounds = [];
 X.Function = [];
 X.Filters = [];
 X.Kernel = [];
+X.Frequency = [];
 X.Timesteps = [];  % [first last]
 X.Stride = []; % scalar
 X.Period = []; % scalar
@@ -96,6 +99,10 @@ fieldTokens = mySortTokens(tokenizeFields(X.Fields, 'd e b h j m'));
 % If we obtained Bounds and not YeeCells, set the YeeCells appropriately
 if ~isempty(X.Bounds)
     X.YeeCells = sim.boundsToYee(X.Bounds, fieldTokens);
+end
+
+if ~isempty(X.Frequency) && ~isempty(X.Timesteps)
+    error('Frequency option cannot coexist with Timesteps or Duration');
 end
 
 if isempty(X.Timesteps)
@@ -162,6 +169,7 @@ obj.yeeCells = X.YeeCells; % validated
 obj.bounds = X.Bounds; % validated
 obj.timesteps = X.Timesteps; % validated
 obj.stride = X.Stride; % validated
+obj.frequency = X.Frequency;
 obj.period = X.Period; % validated
 obj.mode = X.Mode;
 
