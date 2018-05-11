@@ -10,8 +10,6 @@ pos = cell(of.numFields(), 1);
 posInterp = of.positions();
 timeVals = pos;
 
-[~, tInterp] = timeExtent(of);
-
 filters = {};
 
 % space filters
@@ -31,6 +29,7 @@ for xyz = 1:3
 end
 
 % time filters
+[~, tInterp] = timeExtent(of);
 for ff = 1:of.numFields()
     timeVals{ff} = of.times('Field', ff);
     timeMatrices{ff} = adjoint.interpolationMatrix(timeVals{ff}, ...
@@ -43,8 +42,7 @@ filters = [filters, userFilters];
 
 %%
 
-[f, Df] = adjoint.evalQF(data, filters, userKernel, posInterp{1}, posInterp{2}, ...
-    posInterp{3}, tInterp);
+[f, Df] = adjoint.evalQF(data, filters, userKernel, posInterp{1}, posInterp{2}, posInterp{3}, tInterp);
 
 
 function [tSpan, tSamples] = timeExtent(of)

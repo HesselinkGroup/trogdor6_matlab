@@ -67,6 +67,14 @@ classdef OutputFile < handle
             nA = numel(obj.AngularFrequencies);
         end
         
+        function yesNo = isTimeDomain(obj)
+            yesNo = isempty(obj.AngularFrequencies);
+        end
+        
+        function yesNo = isFrequencyDomain(obj)
+            yesNo = ~obj.isTimeDomain();
+        end
+        
         function yesNo = hasBounds(obj)
             yesNo = ~any(isnan(obj.Regions.Bounds(:)));
         end
