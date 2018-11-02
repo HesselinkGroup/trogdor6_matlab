@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function xyzPos = positions(obj, varargin)
 % positions  Get the positions of each sample in the output file
 %

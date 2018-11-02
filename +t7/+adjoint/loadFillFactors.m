@@ -1,5 +1,10 @@
 function [f, dfdp] = loadFillFactors()
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 f = adjoint.readFillFactors('fillFactors');
 Df = fillFactorSensitivity();
 

@@ -33,6 +33,11 @@ function [pv, timeOrFreq, positions] = poyntingVector(fileName, varargin)
 % To obtain the flux of the Poynting vector through a plane or closed box,
 % consider using poyntingVectorFlux().
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 if nargin == 2 && strcmpi(varargin{1}, 'Time')
     varargin{2} = 1;
 end

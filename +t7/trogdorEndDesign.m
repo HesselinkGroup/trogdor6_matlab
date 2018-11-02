@@ -3,6 +3,11 @@ function designObject = trogdorEndDesign(varargin)
 %
 % Tag     simulation tag for output and sim directories
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 X.Tag = '';
 X = t7.parseargs(X, varargin{:});
 

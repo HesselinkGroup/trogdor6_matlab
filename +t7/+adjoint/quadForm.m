@@ -10,6 +10,11 @@ function X = quadForm(varargin)
 % Kernel    NfxNf matrix connecting field components, e.g. to calculate D*E
 %           or ExH
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 X.X = [];
 X.Y = [];
 X.Z = [];

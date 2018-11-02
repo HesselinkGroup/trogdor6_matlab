@@ -10,6 +10,10 @@ function dt = courant(varargin)
 %
 % You may want to multiply dt by 0.99 to guarantee stability.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 if nargin == 1
     if length(varargin{1}) == 1
         dxyz = [varargin{1}];

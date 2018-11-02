@@ -101,6 +101,11 @@ function [f, freqs, resid, residFrac] = spectrum(fileName, varargin)
 %   comparison of spectra of signals taken with different sampling
 %   intervals or from FDTD simulations of different total durations.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import t7.*;
 
 X.Frequency = [];

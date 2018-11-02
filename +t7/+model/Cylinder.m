@@ -5,6 +5,11 @@
 % c = Cylinder(@(p) [0 0 0 1 1 1], 'NumSides', 3, ...
 %   'Permittivity', 'Air', 'Permeability', 'Air');
 %
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 classdef Cylinder < t7.model.Node
     
     properties

@@ -9,6 +9,11 @@ function o = readFillFactors(filePrefix)
 % Typically the orientation report will contain the orientation matrices
 % for Ex, Ey and Ez in order (the fieldXYZ index).
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 header = [filePrefix, '.txt'];
 
 fid = fopen(header, 'r');

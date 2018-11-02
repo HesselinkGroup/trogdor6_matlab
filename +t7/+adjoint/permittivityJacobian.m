@@ -13,6 +13,11 @@ function [num, den] = permittivityJacobian(node, param, epsNumer, ...
 % Indexing: [x y z fieldXYZ lag paramIndex]
 %
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 %node = group;
 %param = parameters(pp);
 %epsNumer = num;

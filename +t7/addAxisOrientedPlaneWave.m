@@ -45,6 +45,10 @@ function addAxisOrientedPlaneWave(varargin)
 %   Source data into the box [0 0 0 100 100 100] but omit the TFSF correction on
 %   the +Z and -Y faces.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 
 sim = simulation();

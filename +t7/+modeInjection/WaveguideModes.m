@@ -24,6 +24,11 @@ classdef WaveguideModes
 %   Permittivity        size MxN array of relative permittivities
 %   BoundaryConditions  a string, e.g. '0000', compatible with modesolver package
 %
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
     
     properties
         E

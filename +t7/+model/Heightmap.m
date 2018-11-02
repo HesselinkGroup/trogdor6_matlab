@@ -20,6 +20,11 @@
 % with holes in the bottom you will need to chop off the bottom with another 
 % block of material (e.g. a Rect).
 %
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 classdef Heightmap < t7.model.Node
     
     

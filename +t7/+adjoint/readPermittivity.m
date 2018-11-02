@@ -10,6 +10,11 @@ function [numer, denom] = readPermittivity(filePrefix)
 % size(numer) = [numX numY numZ 3 numLags]
 % size(denom) = [numX numY numZ 3 numLags]
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 header = [filePrefix, '.txt'];
 
 fid = fopen(header, 'r');

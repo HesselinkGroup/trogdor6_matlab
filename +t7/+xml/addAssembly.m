@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function addAssembly(sim, gridXML, documentNode, origin)
 global TROG_XML_COUNT___;
 doc = documentNode;

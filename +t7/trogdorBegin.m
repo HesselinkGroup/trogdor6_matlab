@@ -7,6 +7,11 @@ function trogdorBegin(varargin)
 %       ten cells of PML on all six sides.  The Courant parameter adjusts the
 %       timestep based on the spatial step.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import t7.*;
 
 X.Bounds = [0 0 0 0 0 0];

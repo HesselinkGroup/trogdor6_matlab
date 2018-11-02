@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function [C, blockA, blockB] = blockProduct(A, B, blockSizeA, blockSizeB)
 %blockProduct    Blockwise product of matrices (poor man's tensor product)
 % A block matrix is a matrix comprised of an integral tiling of matrices of

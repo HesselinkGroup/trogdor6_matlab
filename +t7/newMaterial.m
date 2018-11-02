@@ -28,6 +28,10 @@ function [zNumerator, zDenominator] = newMaterial(name, varargin)
 %   epsr = epsinf - wp^2/(-s^2 + s*gamma)
 %
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 
 sim = simulation();

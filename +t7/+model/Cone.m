@@ -7,6 +7,11 @@ classdef Cone < t7.model.Node
 %       'BaseZ', @(p) 0, 'TipX', @(p) 0.5, 'TipY', @(p) 0.5, ...
 %       'TipZ', @(p) 1, 'Permittivity', 'Air', 'Permeability', 'Air');
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
     properties
         baseX = @(p) 0;
         baseY = @(p) 0;

@@ -6,6 +6,11 @@ function Do = orientationJacobian(node, param, orientation)
 % Indexing: x y z i j fieldXYZ parameter
 %
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 %node = group;
 %param = 0;
 

@@ -21,6 +21,11 @@
 %   Permeability:   name of the permeability model representing this
 %                   material
 %
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 classdef Extrude < t7.model.Node
     
     properties

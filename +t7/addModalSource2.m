@@ -66,6 +66,10 @@ function addModalSource2(varargin)
 % frequency component will be the same as the amplitude passed to PhasorE
 % and PhasorH.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 import modeInjection.*
 

@@ -51,6 +51,10 @@ function [flux, timeOrFreq, faceFluxes] = poyntingVectorFlux(fileName, varargin)
 %   square in the XY plane in 2D will not be multiplied by the "height" dz.
 %
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 if nargin == 2
     varargin{3} = 1;
 end

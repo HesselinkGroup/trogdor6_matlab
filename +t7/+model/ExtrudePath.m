@@ -16,6 +16,11 @@ classdef ExtrudePath < t7.model.Node
 % I consider the design vis-a-vis "T to be sort of unnecessarily
 % complicated.  Probably I should just have the Path function return the
 % actual knots I want for the structure, using interpolation if I want it.
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
     
     properties
         permittivity = 'none';

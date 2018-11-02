@@ -8,6 +8,10 @@ function valid = validatePMLParams(cellArray)
 % 
 % etc.  Returns 1 for valid, 0 for invalid.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 valid = 1;
 
 X.kappa = '';

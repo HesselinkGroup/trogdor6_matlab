@@ -1,6 +1,11 @@
 function [f, dfdp, dfdv] = designSensitivity(designObject, parameters, callback)
 % [f dfdp dfdv] = designSensitivity(designObject, parameters, callback)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 %global fs;
 %global ps;
 

@@ -7,6 +7,11 @@ function validateDataRequestParameters(X)
 %   X.SpaceTimeFile exists along with X.TimeFile or X.MaskFile
 % Doesn't check if the fields are ordered right (E before H, K before J).
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 % Validate fields; should be a single string with some tokens in it
 fieldTokens = {};
 remainder = X.Field;

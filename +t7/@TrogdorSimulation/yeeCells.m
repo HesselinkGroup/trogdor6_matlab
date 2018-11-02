@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function y = yeeCells(obj, bounds)
 %yeeCells Calculate the rectangle of cells that encompasses the given
 %bounds (real coordinates); clip to grid bounds.

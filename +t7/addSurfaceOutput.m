@@ -51,6 +51,10 @@ function addSurfaceOutput(fileName, fields, varargin)
 %                       X, low Y, high Y, low Z, high Z.
 %                       (default: [1 1 1 1 1 1])
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 sim = simulation();
 

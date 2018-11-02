@@ -15,6 +15,10 @@ function setBackground(varargin)
 %   To set both permittivity and permeability, make one call to
 %   setBackground().
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 
 sim = simulation();

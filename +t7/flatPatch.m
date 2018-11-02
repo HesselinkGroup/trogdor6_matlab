@@ -13,6 +13,10 @@ function h = flatPatch(varargin)
 % FaceFilter    a function @(vert1, vert2, vert3) that must be true for the
 %               face to be rendered
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 % turned off...
 
 % AllVertices   a function @(vertex) that must be true for all vertices to

@@ -16,6 +16,10 @@ function trogEllipsoid(rect, varargin);
 %   version 4.5
 %   July 29, 2008
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 colors = [0 0 1];
 
 if (nargin > 1)

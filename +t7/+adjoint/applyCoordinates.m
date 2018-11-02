@@ -4,6 +4,11 @@ function UU = applyCoordinates(U, whichCoords, xs, ys, zs, ts)
 % Well, if U returns four fields, that's a signal.
 % If U depends on t, that's a signal too.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 if ~isa(U, 'function_handle')
     UU = U;
     return;

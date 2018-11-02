@@ -35,6 +35,10 @@ function addPoyntingOutput(fileName, varargin)
 %                       number of rows as Timesteps, then each Timesteps will
 %                       have its own Period.  (default: 1)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 X.Bounds = [];
 X.Timesteps = [];
 X.Period = [];

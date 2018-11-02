@@ -22,6 +22,11 @@ function [f, Df, f_w, freqs] = quadraticObjective(data, varargin)
 % Math background: let the objective function be x'*A*x.  Then the adjoint
 % source should be (A' + A)*x.  I think.  I'm trying to do that.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import t7.*
 
 X.Kernel = [];

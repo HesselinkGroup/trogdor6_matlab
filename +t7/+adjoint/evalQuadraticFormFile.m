@@ -1,6 +1,11 @@
 function [f, Df] = evalQuadraticFormFile(file, userFilters, userKernel)
 % [f Df] = evalQuadraticFormFile(file, userFilters, userKernel)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import t7.*
 
 data = readOutputFile(file, 'InterpolateSpace', false);

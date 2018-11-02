@@ -11,6 +11,10 @@ function s = squish(a, dims)
 % Paul Hansen
 % February 1, 2012
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 if nargin == 1
     dims = size(a) == 1;
 end

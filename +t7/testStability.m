@@ -4,6 +4,11 @@ function isStable = testStability(zNumer, zDenom, dt, dxyz, numCells)
 %
 % isStable = testStability(zNumer, zDenom, dt, dxyz, numCells)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import t7.*
 
 isStable = true;

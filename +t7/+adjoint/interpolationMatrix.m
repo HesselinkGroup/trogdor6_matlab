@@ -5,6 +5,11 @@ function matrix = interpolationMatrix(xIn, xOut)
 % where nOut = length(xOut) and nIn = length(xIn).  xOut and xIn are the
 % positions of samples in an output vector and input vector.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 numIn = length(xIn);
 numOut = length(xOut);
 

@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 classdef Rect < t7.model.Node
 % Rect  Representation of an axis-aligned rectangle
 % 

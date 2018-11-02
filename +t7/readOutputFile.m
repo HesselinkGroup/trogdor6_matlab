@@ -9,6 +9,10 @@ function [data, positions] = readOutputFile(fileName, varargin)
 % Times
 % InterpolateSpace
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 X.Regions = 'Separate';
 X.Positions = [];
 X.Size = [];

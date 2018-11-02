@@ -13,6 +13,11 @@ function validateSourceDataParameters(X)
 % As soon as a problem is found this function will throw an error.
 % It has no return value.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 % Validate fields; should be a single string with some tokens in it
 fieldTokens = {};
 remainder = X.Field;

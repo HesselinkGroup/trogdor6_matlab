@@ -17,6 +17,12 @@ function iii = bandwidth(x, varargin)
 %   % Find the -10 dB point
 %   srcBandwidth10 = freqs(analysis.bandwidth(positiveSpectrum, -10));
 %
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 if nargin > 1
     dBlevel = varargin{1};
 else

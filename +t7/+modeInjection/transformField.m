@@ -6,6 +6,11 @@ function Eout = transformField(T, dx, x, y, z, E, xx, yy, zz)
 %
 % 
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import modeInjection.*
 
 E = reshape(E, numel(x), numel(y), numel(z), 3);

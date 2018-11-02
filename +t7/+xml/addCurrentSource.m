@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function addCurrentSource(src, sim, gridXML, doc)
 global TROG_XML_COUNT___;
 

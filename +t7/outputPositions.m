@@ -5,6 +5,10 @@ function xyz = outputPositions(fileName, varargin)
 %
 %   This is a convenience function wrapping OutputFile.positions().
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 
 %   Example: 'out' contains the hz field in a rectangle in 2d.
 %   

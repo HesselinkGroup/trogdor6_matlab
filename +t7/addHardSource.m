@@ -56,6 +56,10 @@ function addHardSource(varargin)
 %   timesteps 0:10 and 100:110, where ex varies sinusoidally and hx varies
 %   as a decaying exponential.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 
 sim = simulation();

@@ -1,5 +1,10 @@
 function tokens = tokenizeFields(fieldString, fieldPrefixes)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 tokens = {};
 
 if isstr(fieldPrefixes)

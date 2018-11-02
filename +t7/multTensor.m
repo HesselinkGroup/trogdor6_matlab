@@ -2,6 +2,10 @@ function B = multTensor(T, A, dim)
 % mult(T, A, dim) multiplies tensor T by matrix A over dimension dim
 % (A*T)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 if dim < 1
     error('dim must be valid dimension of T');
 end

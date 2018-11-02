@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function v = extendIntoPML(obj, vertices)
 
 if size(vertices, 2) ~= 3

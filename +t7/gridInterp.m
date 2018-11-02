@@ -10,6 +10,10 @@ function B = gridInterp(varargin)
 %   will be carried out in those dimensions.  This provides a way to select
 %   which dimensions to interpolate.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 numdim = floor(nargin/2);
 if numdim > 10
     % The reason for this is that I wrote a cell array indicesAll

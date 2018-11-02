@@ -1,4 +1,8 @@
 function [phasorJ, phasorM] = surfaceEquivalentCurrents(srcE, srcH, inwardNormal, x0, y0, z0)
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 
 import t7.modeInjection.*
 

@@ -1,3 +1,7 @@
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 function yees = yeeCells(obj, varargin)
 
 X.Regions = 'Separate'; % Separate or Together

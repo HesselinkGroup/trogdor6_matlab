@@ -1,4 +1,7 @@
 function xyzt = fieldOffset(fieldString)
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
 
 xzyt = [0 0 0 0];
 

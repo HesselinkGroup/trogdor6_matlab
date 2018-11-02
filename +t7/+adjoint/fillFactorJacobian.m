@@ -5,6 +5,11 @@ function Df = fillFactorJacobian(node, param, fillFactors)
 %
 % Indexing: [x y z material fieldXYZ parameter]
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 %node = group;
 %param = 0;
 %fillFactors = f; % size: [x y z material fieldXYZ]

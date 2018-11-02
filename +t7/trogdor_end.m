@@ -11,6 +11,11 @@ function trogdor_end(varargin)
 %   the auxiliary files into the directory "dat" and all the field outputs
 %   into the directory "outputs".
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import com.mathworks.xml.XMLUtils.*;
 
 X.XML = 'params.xml';

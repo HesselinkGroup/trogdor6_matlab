@@ -16,6 +16,11 @@ function func = spatialModulation(modulationFunction, funcOfTime)
 % multiplying that data by a time-dependent signal T(t).
 %
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 %func = @(t) real(modulationFunction funcOfTime(t));
 func = @(t) bsxfun(@times, modulationFunction, ...
     reshape(funcOfTime(t), 1, 1, 1, []));

@@ -1,5 +1,10 @@
 function [outData, idxMovableVertices] = readDeps_freq(fname)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 if nargin < 1
     fname = 'Depsilon';
 end

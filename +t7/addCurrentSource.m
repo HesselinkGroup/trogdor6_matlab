@@ -62,6 +62,10 @@ function addCurrentSource(varargin)
 %
 %   Specify a point z-oriented dipole of amplitude 1 at (50,50,50).
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 import t7.*
 
 sim = simulation();

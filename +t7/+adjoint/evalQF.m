@@ -2,6 +2,11 @@ function [f, Df] = evalQF(data, filters, kernel, xs, ys, zs, ts)
 % [f Df] = evalQF(data, filters, kernel, xs, ys, zs, ts)
 %
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 import multiplyTensors.*
 import t7.adjoint.*
 

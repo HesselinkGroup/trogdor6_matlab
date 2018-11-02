@@ -2,6 +2,11 @@ function renderGeometry(varargin)
 % renderGeometry('Model', m, 'Parameters', p, 'MeasurePosition', mp, ...
 %   'SourcePosition', sp, 'Units', 1, 'Sensitivity', sen, ...
 %   'Materials', 1:4);
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 X.Model = [];
 X.Parameters = [];
 X.MeasurePosition = [];

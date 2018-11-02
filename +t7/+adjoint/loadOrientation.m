@@ -1,5 +1,10 @@
 function [o, dodp] = loadOrientation(freeDirection)
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 o = readOrientation('orientations');
 Do = orientationSensitivity(); % indexing: x y z i j fieldXYZ
 

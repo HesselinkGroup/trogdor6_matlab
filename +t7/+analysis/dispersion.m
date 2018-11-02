@@ -15,4 +15,9 @@ function func = dispersion(numer, denom)
 % Note that under the positive frequency convention a lossy material has a
 % negative imaginary permittivity.
 
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
+
 func = @(w) polyval(numer, 1i*w) ./ polyval(denom, 1i*w);
