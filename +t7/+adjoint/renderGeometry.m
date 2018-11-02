@@ -50,7 +50,7 @@ if ~isempty(X.Model)
 end
 
 
-matlColors = {'g', 'b', 'g', 'y', 'g', 'b', 'y'};
+matlColors = {'g', 'y', 'r', 'y', 'g', 'b', 'y'};
     
 for pp = X.Materials
     %fprintf('Material %i\n', pp)
@@ -68,6 +68,7 @@ if ~isempty(X.Sensitivity)
         controlVertices(:,3)', ...
         X.Sensitivity(1,1:3:end), X.Sensitivity(1,2:3:end), ...
         X.Sensitivity(1,3:3:end), ...
+        0.1,...
         'r', 'LineWidth', 1.5);
     hold on
 end

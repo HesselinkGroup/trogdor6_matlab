@@ -11,6 +11,10 @@ if strcmpi(computer, 'GLNXA64')
     snapdragon = 'env -u LD_LIBRARY_PATH snapdragon';
     meshboolean = 'env -u LD_LIBRARY_PATH meshboolean';
 else
+    %warning('Using WIP trogdor');
+    %snapdragon = '/Users/paul/Documents/Work/Light/Development/trogdor7/xcode/FDTD/Debug/trogdor7';
+    %snapdragon = '/Users/paul/Documents/Work/Light/Development/trogdor7/unix_release/FDTD/trogdor7';
+    %snapdragon = '/Users/paul/Documents/Work/Light/Development/trogdor7/xcode/FDTD/Debug/trogdor7';
     snapdragon = '/usr/local/bin/trogdor7';
     meshboolean = '/usr/local/bin/meshboolean';
 end
@@ -20,7 +24,10 @@ unixCall = sprintf('%s %s/params.xml %s/bparams.xml; %s --geometry --sensitivity
     snapdragon, designObject.Sim.OutputDirectory, ...
     designObject.Sim.Directory);
 
+tic;
 exitval = unix(unixCall);
+t = toc;
+%fprintf('Forward sim: %0.2f s\n', t);
 
 if exitval
     warning('Unix is unhappy with forward sim');
@@ -41,7 +48,11 @@ unixCall = sprintf('%s %s/params.xml %s/bparams.xml; %s --adjoint --sensitivity 
 %unixCall = sprintf('%s --adjoint --booleans --sensitivity --outputDirectory %s %s/params.xml > out.txt', ...
 %    snapdragon, designObject.Sim.OutputDirectory, ...
 %    designObject.Sim.Directory);
+
+tic;
 exitval = unix(unixCall);
+t = toc;
+%fprintf('Adjoint sim: %0.2f s\n', t);
 
 if exitval
     warning('Unix is unhappy with adjoint sim');

@@ -43,6 +43,5 @@ for ff = 1:length(of.Fields)
 end
 
 [unused, permutation] = sort(adjointFieldOrder);
-str = cell2mat(cellfun(@(s) [s, ' '], adjointCurrents(permutation), ...
-    'UniformOutput', false));
+str = cell2mat(cellfun(@(s) [s, ' '], adjointCurrents(permutation), 'UniformOutput', false));
 

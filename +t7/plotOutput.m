@@ -29,6 +29,7 @@ X.FilePattern = '';
 X.Subplots = [];
 X.Times = [];
 X.Callback = [];
+X.Pause = 0.01;
 X = t7.parseargs(X, varargin{:});
 
 if isempty(X.Colormap) && exist('orangecrush', 'file')
@@ -148,7 +149,7 @@ while frameNum <= numFrames
         if ~isempty(X.Callback)
             X.Callback();
         end
-        pause(0.01);
+        pause(X.Pause);
         
         if frameNum < numFrames
             data = file.readFrames('NumFrames', 1);
@@ -299,7 +300,7 @@ for frame = 0:numFrames-1
             X.Callback();
         end
         
-        pause(0.01);
+        pause(X.Pause);
     end
 end
 file.close

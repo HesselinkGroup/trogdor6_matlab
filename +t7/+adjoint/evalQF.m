@@ -11,22 +11,9 @@ d = data;
 
 for mm = 1:numel(filters)
     
-    %if isa(filters{mm}.Data, 'function_handle')
-    %    U = applyCoordinates(filters{mm}.Data, filters{mm}.dim, ...
-    %        xs, ys, zs, ts);
-    %else
-    %    U = filters{mm}.Data;
-    %end
-    
-    %figure(4); clf
-    %subplot(211)
-    %plot(abs(d(:)))
-    %title(sprintf('d before filter %i', mm));
-    
     if any(strcmpi(filters{mm}.Operation, {'Matrix', 'MatrixArray'}))
         
-        U = applyCoordinates(filters{mm}.Data, filters{mm}.dim, ...
-            xs, ys, zs, ts);
+        U = applyCoordinates(filters{mm}.Data, filters{mm}.dim, xs, ys, zs, ts);
         
         if iscell(U)        % Cell array of matrices
             d = txca(d, 5, 4, U, filters{mm}.dim, 2);
@@ -39,7 +26,6 @@ for mm = 1:numel(filters)
         U = applyCoords_Multiply(filters{mm}.Data, filters{mm}.dim, ...
             xs, ys, zs, ts);
         
-        %d = bsxfun(@times, shape(U, size(d), filters{mm}.dim), d);
         d = bsxfun(@times, U, d);
         
     end
@@ -89,7 +75,6 @@ for mm = 1:numel(kernel)
             %kd = txca(kd, 5, 4, U, kernel{mm}.dim, 2);
             %ktd = txca(ktd, 5, 4, U, kernel{mm}.dim, 2);
         else
-            %ktkd = txa(ktkd, 5, U+U', kernel{mm}.dim);
             kd = txa(kd, 5, U, kernel{mm}.dim);
             ktd = txa(ktd, 5, U', kernel{mm}.dim);
         end
@@ -97,8 +82,7 @@ for mm = 1:numel(kernel)
         
         U = applyCoords_Multiply(kernel{mm}.Data, kernel{mm}.dim, ...
             xs, ys, zs, ts);
-        %kd = bsxfun(@times, shape(U, size(kd), filters{mm}.dim), kd);
-        %ktd = bsxfun(@times, shape(U, size(ktd), filters{mm}.dim), ktd);
+        
         kd = bsxfun(@times, U, kd);
         ktd = bsxfun(@times, U, ktd);
     end
@@ -174,20 +158,5 @@ Df = dd;
 % Now dd = U'*K*U*x.  Twice its real part is the sensitivity, I guess.
 % Df = 2*real(dd);
 
-
-function y = shape(x, sz, dims)
-% make x 
-
-allCoords = 1:numel(sz);
-
-ySize = sz;
-ySize(setdiff(allCoords, dims)) = 1;
-
-xSize = size(x);
-
-
-ySize(dims) = size(x);
-
-y = reshape(x, ySize);
 
 

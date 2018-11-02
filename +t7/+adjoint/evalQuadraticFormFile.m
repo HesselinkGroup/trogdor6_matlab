@@ -28,20 +28,24 @@ for xyz = 1:3
     filters = [filters, {adjoint.lf('MatrixArray', spaceMatrices, 'Dim', xyz)}];
 end
 
-% time filters
-[~, tInterp] = timeExtent(of);
-for ff = 1:of.numFields()
-    timeVals{ff} = of.times('Field', ff);
-    timeMatrices{ff} = adjoint.interpolationMatrix(timeVals{ff}, ...
-        tInterp);
+
+if of.isTimeDomain()
+    % time filters
+    [~, tInterp] = timeExtent(of);
+    for ff = 1:of.numFields()
+        timeVals{ff} = of.times('Field', ff);
+        timeMatrices{ff} = adjoint.interpolationMatrix(timeVals{ff}, ...
+            tInterp);
+    end
+    filters = [filters, {adjoint.lf('MatrixArray', timeMatrices, 'Dim', 5)}];
+else
+    tInterp = of.angularFrequencies();
 end
-filters = [filters, {adjoint.lf('MatrixArray', timeMatrices, 'Dim', 5)}];
 
 % tack on the user filters now
 filters = [filters, userFilters];
 
 %%
-
 [f, Df] = adjoint.evalQF(data, filters, userKernel, posInterp{1}, posInterp{2}, posInterp{3}, tInterp);
 
 
