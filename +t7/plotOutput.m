@@ -37,8 +37,8 @@ X.Callback = [];
 X.Pause = 0.01;
 X = t7.parseargs(X, varargin{:});
 
-if isempty(X.Colormap) && exist('orangecrush', 'file')
-    colormap orangecrush;
+if isempty(X.Colormap) && exist('t7.orangecrush', 'file')
+    colormap t7.orangecrush;
 elseif ~isempty(X.Colormap)
     colormap(X.Colormap);
 end
@@ -107,11 +107,11 @@ for ff = 1:file.numFields
 end
 
 if ~isempty(X.Times)
-    plot(X.Times, squish(data));
+    plot(X.Times, t7.squish(data));
 else
     %for ff = 1:file.numFields
-        %plot(fileTimes{ff}, squish(data(:,:,:,ff,:)));
-        plot(ft, squish(data)');
+        %plot(fileTimes{ff}, t7.squish(data(:,:,:,ff,:)));
+        plot(ft, t7.squish(data)');
     %    hold on
     %end
 end

@@ -118,8 +118,8 @@ while tBeginChunk <= numT
     
     fwdBuffer(:,:,1:loadFwdFrames) = fwdDE.readFrames(...
         'NumFrames', loadFwdFrames, 'Regions', 'Together');
-    fwdEBuffer = squish(fwdBuffer(:,1,:), 2); % squeeze out the {E,D} dimension
-    fwdDBuffer = squish(fwdBuffer(:,2,:), 2);
+    fwdEBuffer = t7.squish(fwdBuffer(:,1,:), 2); % squeeze out the {E,D} dimension
+    fwdDBuffer = t7.squish(fwdBuffer(:,2,:), 2);
     
     %fprintf('Fwd: load %i to %i\n', tFwdFirst, tFwdLast);
     
