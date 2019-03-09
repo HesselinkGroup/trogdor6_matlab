@@ -1,6 +1,12 @@
 function isStable = testStability(zNumer, zDenom, dt, dxyz, numCells)
 %testStability  Predict whether a material model is expected to be
-% stable in FDTD
+% stable in FDTD by calculating the amplification factors for plane waves
+% passing through a homogeneous block of the material.
+%
+% This is not an exact root locus calculation but relies on sampling many
+% wavevectors.
+%
+% Example:
 %
 % isStable = testStability(zNumer, zDenom, dt, dxyz, numCells)
 

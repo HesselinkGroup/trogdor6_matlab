@@ -17,6 +17,10 @@ function plotOutput(fileName, varargin)
 %   Times
 %   Callback
 %
+% Example:
+%
+% plotOutput('output/wholeGridOutput', 'Period', 10) will plot only every
+% tenth timestep.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
@@ -37,8 +41,8 @@ X.Callback = [];
 X.Pause = 0.01;
 X = t7.parseargs(X, varargin{:});
 
-if isempty(X.Colormap) && exist('t7.orangecrush', 'file')
-    colormap t7.orangecrush;
+if isempty(X.Colormap) && exist('orangecrush', 'file')
+    colormap orangecrush;
 elseif ~isempty(X.Colormap)
     colormap(X.Colormap);
 end

@@ -1,7 +1,9 @@
 function designObject = trogdorEndDesign(varargin)
-% designObject = trogdorEndDesign(varargin)
+% designObject = trogdorEndDesign() finishes construction of
+% parameterizable simulation object.
 %
-% Tag     simulation tag for output and sim directories
+% designObject = trogdorEndDesign('Tag', 'a_tag') will tag the output and 
+% simulation directories with the given string.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

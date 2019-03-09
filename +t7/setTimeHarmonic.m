@@ -1,5 +1,11 @@
 function setTimeHarmonic(varargin)
-%setTimeHarmonic Turn on time-harmonic mode.
+%setTimeHarmonic Turn on time-harmonic mode (specify parameters for
+% broadband source).
+%
+% Example:
+%
+% setTimeHarmonic('Center', centerFreq, 'Sigma', sigmaFreq) sets the
+% source pulse parameters.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

@@ -1,5 +1,7 @@
 function [f, Df] = evalQuadraticFormFile(file, userFilters, userKernel)
 % [f Df] = evalQuadraticFormFile(file, userFilters, userKernel)
+%
+% Internal function
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

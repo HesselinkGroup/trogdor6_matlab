@@ -8,6 +8,8 @@ function [num, den] = permittivityJacobian(node, param, epsNumer, ...
 % [num, den] = permittivityJacobian(node, param, epsNumer, epsDenom, 
 %   vertexNumbers, freeDirections)
 %
+% Internal function.
+%
 % node is a t7.model.Node
 %
 % Indexing: [x y z fieldXYZ lag paramIndex]

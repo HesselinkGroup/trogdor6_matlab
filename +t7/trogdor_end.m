@@ -1,6 +1,6 @@
 function trogdor_end(varargin)
 %trogdor_end End Trogdor simulation description and write parameter file
-%   trogdor_end should be the last function called in describing a Trogdor 6
+%   trogdor_end should be the last function called in describing a Trogdor
 %   simulation.  It will write the parameter file params.xml and all other
 %   data files necessary to run the given simulation.
 %

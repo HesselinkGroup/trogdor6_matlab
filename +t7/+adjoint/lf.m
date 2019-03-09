@@ -1,5 +1,6 @@
 function filter = lf(varargin)
-% filter = lf(...)   Create a linear filter operation
+% filter = lf(...)   Create a linear filter operation for objective
+% functions.
 %
 % Usage:
 %

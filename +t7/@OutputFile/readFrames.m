@@ -1,12 +1,34 @@
+
+function [data, positions] = readFrames(obj, varargin)
+% [data, positions] outputFile.readFrames() reads data from the output file starting at the
+% current file position.
+%
+% Returns: 
+%    data        Array or cell array of field data.
+%                If Regions == Together is given, data will be of size
+%                [numPoints numFields numFrames].
+%                If Regions == Separate is given, each region will be of 
+%                size [Nx Ny Nz numFields numFrames].
+%    positions   Cell array of positions of output fields
+%
+% Named arguments:
+% 
+%   Regions      If 'Together', concatenate fields from all Regions into 
+%                one array.
+%                If 'Separate', put each region into its own cell in data.
+%                If 'Separate' and only one Region is in the file, then
+%                data will be a single array, not a cell array.
+%   Size         Resample to the given size
+%   Times        Resample to the given time points
+%   Positions    {x, y, z} 1d arrays, suitable for arguments to ndgrid.
+%                The data will be resampled onto the points given by
+%                ndgrid(x,y,z).
+%   InterpolateSpace  Force spatial interpolation of fields in the rare
+%                     case that Bounds was not specified in the file.
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
-
-function [data, positions] = readFrames(obj, varargin)
-% outputFile.readFrames()
-% outputFile.readFrames(numFrames)
-% outputFile.readFrames(numFrames, 'Regions', 'Together')
-% outputFile.readFrames(numFrames, 'Regions', 'Separate')
 
 X.NumFrames = obj.numFramesAvailable();
 X.Regions = 'Separate';

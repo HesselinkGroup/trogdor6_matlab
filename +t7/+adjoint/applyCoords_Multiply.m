@@ -1,6 +1,8 @@
 function UU = applyCoords_Multiply(U, whichCoords, xs, ys, zs, ts)
 % UU = applyCoords_Multiply(U, whichCoords, xs, ys, zs, ts)
 %
+% Internal function.
+%
 % Evaluate U at the points in xs, ys, zs, ts.
 % whichCoords selects arguments for U from xs, ys, zs ts.  For instance:
 %  if U = U(y), then whichCoords = [2].

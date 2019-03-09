@@ -1,5 +1,7 @@
 function [dNumerExp, dDenomExp] = loadPermittivitySensitivity(freeDirection)
 %function [dNumerExp, dDenomExp] = loadPermittivitySensitivity(freeDirection)
+% 
+% Internal function
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

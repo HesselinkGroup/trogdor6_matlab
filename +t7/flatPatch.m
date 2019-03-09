@@ -11,7 +11,7 @@ function h = flatPatch(varargin)
 % Extra options:
 %
 % FaceFilter    a function @(vert1, vert2, vert3) that must be true for the
-%               face to be rendered
+%               face to be rendered.  Useful for cutaway views.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

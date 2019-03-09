@@ -1,8 +1,12 @@
+function n = numFramesAvailable(obj)
+% n = obj.numFramesAvailable() returns the number of completely-written
+% timesteps or frequency steps in the output file.  During a long-running
+% simulation, earlier timesteps may be written to the disk and available
+% for visualization or analysis before the entire simulation has completed.
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
-
-function n = numFramesAvailable(obj)
 
 if ~exist(obj.FileName, 'file')
     n = 0;

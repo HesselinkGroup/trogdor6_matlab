@@ -1,9 +1,13 @@
+function readSpecFile(obj)
+% obj.readSpecFile()  Set attributes of OutputFile object from values in
+% the given output spec file (.txt).
+%
+% Internal function
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
 
-% readSpecFile
-function readSpecFile(obj)
 
 isTrogdor5 = 0;
 

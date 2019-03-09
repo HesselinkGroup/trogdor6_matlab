@@ -1,4 +1,4 @@
-function trogEllipsoid(rect, varargin);
+function trogEllipsoid(rect, varargin)
 % trogEllipsoid       Plot 3D outline of an ellipsoid
 %   trogEllipsoid(rect) where rect bounds an ellipsoid in trogdor format, i.e.
 %       [x1 y1 z1 x2 y2 z2],

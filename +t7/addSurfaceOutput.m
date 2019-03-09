@@ -64,7 +64,6 @@ X.Timesteps = [];
 X.Stride = [1 1 1];
 X.Period = [];
 X.CutoffFrequency = [];
-X.InterpolationPoint = [];
 X.Sides = [1 1 1 1 1 1];
 X = t7.parseargs(X, varargin{:});
 
@@ -86,7 +85,7 @@ for side = 1:6
 end
 
 if isempty(bounds)
-    warning('Poynting surface omits all six sides!');
+    warning('Surface output omits all six sides!');
 end
 
 addOutput(fileName, fields, ...

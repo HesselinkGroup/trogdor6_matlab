@@ -1,4 +1,6 @@
 function validateSourceDataParameters(X)
+% Internal function.
+%
 % Validate the various data parameters to addHardSource and addSoftSource.
 % This function will:
 % - make sure Yee cells and Bounds are Nx6 (whichever is provided)

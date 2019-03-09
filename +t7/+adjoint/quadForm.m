@@ -9,6 +9,8 @@ function X = quadForm(varargin)
 %           (including dt measure, so it's resolution-independent!)
 % Kernel    NfxNf matrix connecting field components, e.g. to calculate D*E
 %           or ExH
+%
+% Internal function.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

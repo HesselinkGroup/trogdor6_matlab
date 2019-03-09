@@ -1,7 +1,8 @@
-function addModalSource(varargin)
+function addModalSource2(varargin)
 % addModalSource  Add electric and magnetic source currents to impress a field
 %
-% addModalSource('Bounds', [0 0 0 100 100 0], 'PhasorE', EE, 'PhasorH', HH, ...
+% addModalSource('Bounds', [0 0 0 100 100 0], ...
+%   'Ex', ex, 'Ey', ey, 'Ez', ez, 'Hx', hx, 'Hy', hy, 'Hz', hz, ...
 %   'TimeEnvelope', @(t) exp(1i*freq*t), ...
 %   'Direction', [0 0 1], 'X', xSrc, 'Y', ySrc, 'Z', zSrc)
 % Drive the grid with an impressed field distribution (e.g. waveguide mode).
@@ -11,7 +12,7 @@ function addModalSource(varargin)
 %   Named parameters:
 %       Bounds      Region of simulation space in which to add electromagnetic
 %                   current
-%       PhasorE     An array of size [N M P 3] with complex amplitude of the E-
+%       Ex, Ey, Ez  Array of size [N M P 3] with complex amplitude of the E-
 %                   field in a volume including Bounds.  Internally the fields
 %                   necessary for the source currents will be interpolated to
 %                   all necessary positions, so the number of samples N, M and P

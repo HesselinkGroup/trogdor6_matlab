@@ -1,8 +1,28 @@
+function yees = yeeCells(obj, varargin)
+% yee = obj.yeeCells()  Returns the indices of yeeCells from the output
+% file.
+%
+% Each Region in the output file saves fields within a rectangle of points,
+% ordered like ndgrid(ix, iy, iz), where ix, iy and iz are 1d arrays.
+% yeeCells() returns ix, iy and iz.
+%
+% For single-Region output files: returns [ix, iy, iz].
+%
+% For multi-Region output files: returns { [ix1, iy1, iz1], [ix2, iy2,
+% iz2], ...} by default.
+%
+% obj.yeeCells('Regions', 'Together') will unroll and concatenate all
+% points into 1d arrays.  Equivalent to 
+%    ixx, iyy, izz = ndgrid(ix, iy, iz)
+% for each Region, then returning
+%    [ [ixx1(:), ixx2(:), ...], [iyy1(:), iyy2(:), ...], [izz1(:), izz2(:),
+%    ...] ].
+% 
+% obj.yeeCells('Regions', 'Separate') uses the default behavior.
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
-
-function yees = yeeCells(obj, varargin)
 
 X.Regions = 'Separate'; % Separate or Together
 X.Region = [];
@@ -31,39 +51,6 @@ elseif strcmpi(X.Regions, 'Together')
     end
 end
 
-%{
-if strcmp(X.Regions, 'Separate')
-    ii = cell(obj.numRegions(), 1);
-    jj = cell(obj.numRegions(), 1);
-    kk = cell(obj.numRegions(), 1);
-    
-    for rr = 1:obj.numRegions
-        ii{rr} = obj.Regions.YeeCells(rr,1):obj.Regions.Stride(rr,1):obj.Regions.YeeCells(rr,4);
-        jj{rr} = obj.Regions.YeeCells(rr,2):obj.Regions.Stride(rr,2):obj.Regions.YeeCells(rr,5);
-        kk{rr} = obj.Regions.YeeCells(rr,3):obj.Regions.Stride(rr,3):obj.Regions.YeeCells(rr,6);
-    end
-    
-    if obj.numRegions() == 1
-        ii = ii{1};
-        jj = jj{1};
-        kk = kk{1};
-    end
-
-elseif strcmp(X.Regions, 'Together')
-    ii = [];
-    jj = [];
-    kk = [];
-    
-    for rr = 1:obj.numRegions()
-        [ii1, jj1, kk1] = unrollRegion(obj.Regions.YeeCells(rr,:));
-        ii = [ii, ii1];
-        jj = [jj, jj1];
-        kk = [kk, kk1];
-    end
-else
-    error('Invalid Regions option');
-end
-%}
 
 function validateArguments(obj, X)
 

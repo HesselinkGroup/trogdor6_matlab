@@ -1,5 +1,7 @@
 function xyz = outputPositions(fileName, varargin)
-%outputPositions Return the x, y and z coordinates of Trogdor output data
+%outputPositions Return the x, y and z coordinates from a Trogdor output
+%file.
+%
 %   xyz = outputPositions('out') will return the positions at which
 %   fields are measured in the output file called "out".
 %

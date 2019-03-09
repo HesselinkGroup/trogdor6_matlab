@@ -1,10 +1,18 @@
+function tt = times(obj, varargin)
+% tt = obj.times(fieldIdx)  Return the time points for the fieldIdx-th
+% field saved in the output file.  ONLY WORKS FOR ONE FIELD AT A TIME.
+%
+% Example: assume OutputFile saved Ex and Hy.
+%
+% obj.times(1) returns the time points for Ex samples
+% obj.times(2) returns the time points for Hy samples
+%
+% obj.times() is equivalent to obj.times(1).
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
 
-function tt = times(obj, varargin)
-% times()
-% times('Field', 1)
 
 X.Field = [];
 X = t7.parseargs(X, varargin{:});

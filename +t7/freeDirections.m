@@ -1,11 +1,12 @@
 function freeDirections(varargin)
+% Deprecated.
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
 
 import t7.*
 sim = simulation();
-%grid = sim.CurrentGrid;
 
 X.YeeBounds = [0 0 0 0 0 0];
 X.Directions = [0 0 0];

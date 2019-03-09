@@ -1,4 +1,7 @@
 function [numerator, denominator] = materialModel(modelName)
+% [numerator, denominator] = materialModel(modelName)
+%
+% Internal function
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

@@ -1,8 +1,13 @@
+function data = readFromFile(obj, numFrames, dataXYZ, outXYZ)
+% data = obj.readFromFile(numFrames, dataXYZ, outXYZ)
+%
+% Internal method.
+%
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
 
-function data = readFromFile(obj, numFrames, dataXYZ, outXYZ)
 
 numFields = length(obj.Fields);
 

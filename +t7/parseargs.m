@@ -25,9 +25,6 @@ function X = parseargs(X,varargin)
 %
 % my_function('OutputFile','out2.txt','SolverType','variablestep');
 
-% Copyright 2018 Paul Hansen
-% Unauthorized copying of this file is strictly prohibited
-% Proprietary and confidential
 
 
 % The various #ok comments below are to stop MLint complaining about

@@ -8,10 +8,6 @@ function addOutput(output, sim, gridXML, doc)
 
 elemXML = doc.createElement('FieldOutput');
 elemXML.setAttribute('fields', output.fields);
-if isfield(output, 'interpolationPoint')
-    elemXML.setAttribute('interpolate', ...
-        sprintf('%2.2f ', output.interpolationPoint));
-end
 %elemXML.setAttribute('file', [directory, output.filename]);
 elemXML.setAttribute('file', output.filename);
 

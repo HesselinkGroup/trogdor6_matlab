@@ -53,17 +53,6 @@ function addOutput(filename, fields, varargin)
 %                       cutoff frequency according to the Nyquist sampling
 %                       theorem.  CutoffFrequency is an alternative to Period.
 %                       (default: unused)
-%       InterpolationPoint
-%                       A point between [0 0 0] and [1 1 1] at which to
-%                       sample E and H fields.  The electromagnetic fields in
-%                       FDTD are calculated at different spatial and temporal
-%                       positions; using an InterpolationPoint will simulate
-%                       measuring the fields all at one location in space by
-%                       trilinear interpolation.  This will NOT resample in
-%                       time.  Applicable only to E and H fields.
-%                       Use this to measure E and H at the same point!
-%                       (default: unused)
-%           
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
@@ -80,7 +69,6 @@ X.Frequency = [];
 X.Duration = []; % [first last]
 X.Period = []; % scalar
 X.CutoffFrequency = [];
-X.InterpolationPoint = []; % [x y z] from 0 to 1
 X.Mode = '';
 
 X = t7.parseargs(X, varargin{:});
@@ -141,15 +129,6 @@ elseif size(X.Period, 1) ~= size(X.Timesteps, 1)
     error('Period must have as many rows as Timesteps.');
 end
 
-if ~isempty(X.InterpolationPoint)
-    if length(X.InterpolationPoint) ~= 3
-        error('Please provide a 3D interpolation point.');
-    end
-    if any(X.InterpolationPoint < 0) || any(X.InterpolationPoint > 1)
-        error('Interpolation point must be between [0 0 0] and [1 1 1].');
-    end
-end
-
 if ~isempty(X.Mode)
     if ~strcmpi(X.Mode, 'forward') && ~strcmpi(X.Mode, 'Adjoint')
         error('Mode must be forward or adjoint if specified');
@@ -168,10 +147,6 @@ obj.frequency = X.Frequency;
 obj.duration = X.Duration; % validated
 obj.period = X.Period; % validated
 obj.mode = X.Mode;
-
-if ~isempty(X.InterpolationPoint)
-    obj.interpolationPoint = X.InterpolationPoint;
-end
 
 sim.Grid.Outputs{end+1} = obj;
 

@@ -1,17 +1,17 @@
 function addMesh(mesh)
-% Store the vertices and faces of a mesh in the simulation data structure.
-% Vertices which touch or reach into the PML will be extended to the outer
-% boundary of the PML.  This will distort the geometry of structures which
-% do not intersect the PML at right angles.
+% addMesh(m) adds the parameterized t7.model.Mesh object to the simulation.
+% Structures which touch the PML will be automatically extruded to the
+% outer boundary of the PML.
+%
+% Mesh primitives in t7.model include Rect, Cylinder, Cone, Ellipsoid, 
+% Extrude, ExtrudePath, FreeMesh, and Heightmap.
+%
+% Mesh transformations in t7.model include Rotate, Translate and ProcessMesh.
 %
 % Example:
 %
-% newMaterial('Air', 'Numerator', 1, 'Denominator', 1);
-% r = t7.model.Rect(@(p) [0 0 0 1 1 1], 'Permittivity', 'Air');
-% 
-% [finish this later]
-% 
-% 
+% addMesh(model.Rect(@(p) [0, 0, 0, 1, 1, 1], 'Permittivity', 'Si');
+%
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

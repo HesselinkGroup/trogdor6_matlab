@@ -1,5 +1,5 @@
 function s = simulation()
-%sim Get current Trogdor sim object
+%s = simulation() Return current simulation object under construction.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

@@ -1,8 +1,16 @@
+function setBoundaryOutput(varargin)
+% setBoundaryOutput turns on field outputs for Yee cells intersected by
+% material interfaces.
+%
+% setBoundaryOutput('Frequency', freq) turns on time-harmonic output mode.
+% Only one frequency may be specified.
+
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
 
-function setBoundaryOutput(varargin)
+
 
 import t7.*;
 

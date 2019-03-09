@@ -1,4 +1,6 @@
 function valid = validatePMLParams(cellArray)
+% Internal function.
+%
 % Checks that cellArray contains only named parameters 'kappa', 'alpha' and
 % 'sigma'.  Some valid cell arrays are:
 %

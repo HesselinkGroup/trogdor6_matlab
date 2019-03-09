@@ -1,6 +1,8 @@
 function Do = orientationJacobian(node, param, orientation)
 % Do = orientationJacobian(node, param, orientation)
 %
+% Internal function
+%
 % node is a t7.model.Node
 %
 % Indexing: x y z i j fieldXYZ parameter

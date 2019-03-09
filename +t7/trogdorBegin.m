@@ -6,6 +6,21 @@ function trogdorBegin(varargin)
 %       duration of the simulation is at least 100 (in simulation units), with
 %       ten cells of PML on all six sides.  The Courant parameter adjusts the
 %       timestep based on the spatial step.
+%
+% Named parameters:
+%     Bounds               outer boundary of simulation space in real
+%                          coordinates, [x0 y0 z0 x1 y1 z1]
+%     NumCells             Discretize Bounds into [Nx Ny Nz] Yee cells
+%     MaxCellSize          Discretize Bounds with Yee cell size <=
+%                          MaxCellSize = [dx dy dz].
+%     Duration             duration of simulation in real time
+%     Courant              Fraction of maximum possible timestep.  0.99 is
+%                          recommended.
+%     PML                  Number of cells of PML on each side of
+%                          simulation bounds
+%                          PML = [nLowX nLowY nLowZ nHighX nHighY nHighZ]
+%     ElectromagneticMode  Limit the fields used in the calculation.
+%                          1d, 2d, 3d, te2d, or tm2d.  (Default: 3d)
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

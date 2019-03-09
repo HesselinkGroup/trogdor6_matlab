@@ -1,9 +1,9 @@
+% OutputFile is a class to read and manipulate Trogdor data that has been
+% written to disk.
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential
-
-% OutputFile
-% This is my output file
 
 classdef OutputFile < handle
     % Output file!
@@ -43,6 +43,13 @@ classdef OutputFile < handle
     methods
         % Constructor
         function obj = OutputFile(fileName)
+            % obj = OutputFile(fileName) prepares to read the given output
+            % file and tries to read its spec file.
+            %
+            % fileName should be the path to the binary file containing
+            % field data.  The corresponding spec file is assumed to have
+            % the same name as the binary file but with a .txt extension.
+            
             obj.FileName = fileName;
             
             % Check for existence of the specfile (required)
@@ -60,31 +67,49 @@ classdef OutputFile < handle
         end
         
         function nR = numRegions(obj)
+            % nR = obj.numRegions()  Return number of rectangular output
+            % regions contained in this file.
             nR = size(obj.Regions.YeeCells, 1);
         end
         
         function nF = numFields(obj)
+            % nF = obj.numFields()  Return number of fields saved in this
+            % output file, e.g. 3 for Ex, Ey and Hz together.
             nF = numel(obj.Fields);
         end
         
         function nA = numAngularFrequencies(obj)
+            % nA = obj.numAngularFreqencies()  Return number of angular
+            % frequencies stored in this output file, if applicable.
             nA = numel(obj.AngularFrequencies);
         end
         
         function yesNo = isTimeDomain(obj)
+            % obj.isTimeDomain()  Return true if this output file contains
+            % time domain data; return false if this file contains
+            % frequency domain data.
             yesNo = isempty(obj.AngularFrequencies);
         end
         
         function yesNo = isFrequencyDomain(obj)
+            % obj.isFrequencyDomain()  Return true if this output file contains
+            % frequency domain data; return false if this file contains
+            % time domain data.
             yesNo = ~obj.isTimeDomain();
         end
         
         function yesNo = hasBounds(obj)
+            % Return true if this output file has a Bounds attribute.
             yesNo = ~any(isnan(obj.Regions.Bounds(:)));
         end
         
         % obtain # of samples per field per timestep
         function fv = fieldValues(obj)
+            % fv = obj.fieldValues()  Return number of distinct field
+            % values saved in the file per timestep.
+            %
+            % Example: if the file saves Ex and Ey (two fields) in a
+            % 100x100x1 block of Yee cells, obj.fieldValues() will return 20000.
             fv = 0;
             for rr = 1:obj.numRegions
                 fv = fv + prod(obj.Regions.Size(rr,:));

@@ -1,4 +1,13 @@
 function [dfdp, dfdv, dvdp] = calculateAdjointSensitivity(node, parameters, outDir)
+% [dfdp, dfdv, dvdp] = calculateAdjointSensitivity(node, parameters,
+% outDir)  Calculate the system sensitivity.  Return three Jacobians:
+%
+%    dfdp   Sensitivity of objective function to user parameters
+%    dfdv   Sensitivity of objective function to mesh vertices
+%    dvdp   Sensitivity of mesh vertices to user parameters
+%
+% Internal function.
+% 
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
@@ -118,8 +127,8 @@ while tBeginChunk <= numT
     
     fwdBuffer(:,:,1:loadFwdFrames) = fwdDE.readFrames(...
         'NumFrames', loadFwdFrames, 'Regions', 'Together');
-    fwdEBuffer = t7.squish(fwdBuffer(:,1,:), 2); % squeeze out the {E,D} dimension
-    fwdDBuffer = t7.squish(fwdBuffer(:,2,:), 2);
+    fwdEBuffer = squish(fwdBuffer(:,1,:), 2); % squeeze out the {E,D} dimension
+    fwdDBuffer = squish(fwdBuffer(:,2,:), 2);
     
     %fprintf('Fwd: load %i to %i\n', tFwdFirst, tFwdLast);
     

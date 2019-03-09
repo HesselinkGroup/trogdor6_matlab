@@ -1,4 +1,6 @@
 function validateDataRequestParameters(X)
+% Internal function.
+% 
 % Throw an error if:
 %   X.YeeCells doesn't have six columns, [x0 y0 z0 x1 y1 z1]
 %   X.Timesteps doesn't have two columns, [t0 t1]

@@ -1,4 +1,7 @@
 function [outData, idxMovableVertices] = readDeps(fname)
+% [outData, idxMovableVertices] = readDeps(fname)
+% 
+% Internal function.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

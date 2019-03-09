@@ -3,11 +3,15 @@ function [data, positions] = readOutputFile(fileName, varargin)
 %   alldat = readOutputFile(filename) is a shortcut for using OutputFile to
 %   read the file.
 %
-% Regions
-% Positions
-% Size
-% Times
-% InterpolateSpace
+% Named arguments:
+%    Regions            'Separate' or 'Together' sets behavior for
+%                       multi-region outputs
+%    Positions          Cell array of x, y and z coordinates (1d arrays,
+%                       like arguments to ndgrid)
+%    Size               Resample to size Size = [Nx, Ny, Nz]
+%    Times              Interpolate to Times = [t0, t1, t2]
+%    InterpolateSpace   Set to true to force spatial interpolation (only
+%                       necessary if the output had no Bounds attribute)
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

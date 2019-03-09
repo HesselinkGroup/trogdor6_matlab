@@ -1,7 +1,3 @@
-% Copyright 2018 Paul Hansen
-% Unauthorized copying of this file is strictly prohibited
-% Proprietary and confidential
-
 function xyzPos = positions(obj, varargin)
 % positions  Get the positions of each sample in the output file
 %
@@ -16,6 +12,11 @@ function xyzPos = positions(obj, varargin)
 % Bounds            Ask Paul
 % InterpolateSpace  true or false
 %
+
+% Copyright 2018 Paul Hansen
+% Unauthorized copying of this file is strictly prohibited
+% Proprietary and confidential
+
 
 X.Regions = 'Separate'; % Separate or Together
 X.Region = [];

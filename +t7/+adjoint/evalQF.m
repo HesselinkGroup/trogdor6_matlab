@@ -1,6 +1,7 @@
 function [f, Df] = evalQF(data, filters, kernel, xs, ys, zs, ts)
 % [f Df] = evalQF(data, filters, kernel, xs, ys, zs, ts)
 %
+% Internal function
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

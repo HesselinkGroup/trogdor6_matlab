@@ -248,8 +248,8 @@ classdef ExtrudePath < t7.model.Node
 
             for pp = 2:size(fwd, 2)
 
-                U = t7.squish(tnb(:,pp-1,:));
-                V = t7.squish(tnb_ahead(:,pp-1,:));
+                U = squish(tnb(:,pp-1,:));
+                V = squish(tnb_ahead(:,pp-1,:));
 
                 if any(isnan(U(:))) || any(isnan(V(:)))
                     u(:,pp) = u(:,pp-1);

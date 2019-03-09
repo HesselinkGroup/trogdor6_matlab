@@ -37,6 +37,8 @@ function addCurrentSource(varargin)
 %                   argument must be a cell array with one function per field
 %                   component, e.g. {jxFunc, jyFunc, jzFunc}.
 %                   (FieldFunction, TimeData, or SpaceTimeData required)
+%       PhasorFunction  Function of space, e.g. @(x,y,z) sin(x).*cos(y).*exp(1i*k*z).
+%                   EXPERIMENTAL: TIME-HARMONIC MODE
 %       TimeData    An array of size [nFields nTimesteps].  If the Timesteps
 %                   is specified as [0 10] then TimeData needs 11 columns, one
 %                   for each sourced timestep.

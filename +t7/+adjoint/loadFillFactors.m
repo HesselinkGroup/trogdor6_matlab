@@ -1,4 +1,7 @@
 function [f, dfdp] = loadFillFactors()
+% [f, dfdp] = loadFillFactors()
+%
+% Internal function
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

@@ -1,6 +1,8 @@
 function Df = fillFactorJacobian(node, param, fillFactors)
 % Df = fillFactorJacobian(node, param, fillFactors)
 %
+% Internal function.
+%
 % node is a t7.model.Node
 %
 % Indexing: [x y z material fieldXYZ parameter]

@@ -1,4 +1,6 @@
 function valid = validateRect(rect)
+% Internal function.
+%
 % Returns 1 if the rect has size [1 6] and satisfies rect(4:6) >= rect(1:3).
 
 % Copyright 2018 Paul Hansen

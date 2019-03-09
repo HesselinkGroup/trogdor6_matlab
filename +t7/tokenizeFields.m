@@ -1,4 +1,10 @@
 function tokens = tokenizeFields(fieldString, fieldPrefixes)
+% tokens = tokenizeFields(fieldString, fieldPrefixes) splits a string of
+% whitespace-separated field names into a cell array of field names.
+% If any of the field tokens do not match tokens in fieldPrefixes, an error
+% will occur.
+%
+% Internal function.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

@@ -1,4 +1,17 @@
 function xyzt = fieldOffset(fieldString)
+% xyzt = fieldOffset(fieldString) gets the space-time offset of a field in
+% the Yee scheme.
+%
+% Example:
+%
+% fieldOffset('ex') returns [0.5, 0, 0, 0] because the Ex field is located
+% at [0.5*dx, 0, 0] inside the Yee cell and at offset 0*dt in time
+%
+% fieldOffset('hx') returns [0, 0.5, 0.5, 0.5] because the Hx field is
+% located at [0, 0.5*dy, 0.5*dz] inside the Yee cell and at offset 0.5*dt
+% in time.
+%
+
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
 % Proprietary and confidential

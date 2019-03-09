@@ -1,5 +1,6 @@
 function psum = polyadd(p1, p2)
-% psum = polyadd(p1,p2)
+% psum = polyadd(p1,p2) calculates the coefficients of a sum of two 
+% polynomials.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

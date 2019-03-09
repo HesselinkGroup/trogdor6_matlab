@@ -1,4 +1,7 @@
 function [o, dodp] = loadOrientation(freeDirection)
+% [o, dodp] = loadOrientation(freeDirection)
+% 
+% Internal function
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited

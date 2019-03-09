@@ -1,5 +1,8 @@
 function r = rectUnion(r1, r2)
-%rectUnion Calculate the rect encompassing both rects
+% r = rectUnion(r1, r2) Calculate the axis-oriented rectangular hull
+% of the input rects r1 and r2.
+%
+% rectUnion is a bit of a misnomer is this operation is not a set union.
 
 % Copyright 2018 Paul Hansen
 % Unauthorized copying of this file is strictly prohibited
